@@ -1,13 +1,14 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 function NavbarPanel() {
 
     const cartProducts = useSelector(state => state.cart); 
-
+    
     return (
         <Navbar bg="primary" variant="dark" expand="lg">
             <Container fluid>
@@ -15,6 +16,10 @@ function NavbarPanel() {
                     <Nav>
                         <Nav.Link to="/" as={Link}>Products</Nav.Link>
                     </Nav>
+                    <Nav>
+                        <Nav.Link to="/story-search" as={Link}>Stories search</Nav.Link>
+                    </Nav>
+
                     <Navbar.Toggle />
                     <Navbar.Collapse className='justify-content-end'>
                         <Navbar.Text>
