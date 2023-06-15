@@ -1,11 +1,13 @@
 import { Button } from '@mui/material';
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from 'react';
-import { getMovies } from '../../store/movieSlice';
+import { getMovies } from '../../store/reducers/movieSlice';
+import { getUserMovies } from '../../store/reducers/userMoviesSlice';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Select from '@mui/joy/Select';
 import Option from '@mui/joy/Option';
+import Search from '@mui/icons-material/Search'
 
 
 const StorySearchForm = () => {
@@ -14,7 +16,7 @@ const StorySearchForm = () => {
         searchQuery: "",
         genre: 0,
         include_adult: "false",
-        language: "en",
+        language: "en-US",
         page: "1"
     });
 
@@ -37,7 +39,7 @@ const StorySearchForm = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-
+        dispatch(getUserMovies("amramos"));
         dispatch(getMovies(filter));
     }
 
@@ -68,6 +70,7 @@ const StorySearchForm = () => {
                 id="story-title" 
                 margin="normal"
                 variant="outlined"
+                required
                 sx={{
                     width: "500px"
                 }}
@@ -88,7 +91,10 @@ const StorySearchForm = () => {
                 <Option value={0}>Any</Option>
                 {genreComboBox()}   
             </Select>
-            <Button onClick={(e) => {onSubmit(e)}} >Search</Button>
+            <Button onClick={(e) => {onSubmit(e)}} variant="outlined"> 
+                <div style={{"margin-right": "10px"}}><Search /> </div> 
+                <div style={{"margin-right": "10px"}}> Search </div>
+            </Button>
         </Box>
     )
 

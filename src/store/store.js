@@ -1,15 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
-import cartSlice from "./cartSlice";
-import productSlice from "./productSlice";
-import movieSlice from "./movieSlice";
-import movieGenreSlice from "./movieGenreSlice";
+import movieSlice from "./reducers/movieSlice";
+import movieGenreSlice from "./reducers/movieGenreSlice";
+import addUserMoviesSlice from "./reducers/addUserMoviesSlice";
+import userMoviesSlice from "./reducers/userMoviesSlice";
+import removeUserMoviesSlice from "./reducers/removeUserMoviesSlice";
 
 const store = configureStore({
     reducer: {
-        cart: cartSlice,
-        products: productSlice,
         movies: movieSlice,
-        movieGenres: movieGenreSlice
+        movieGenres: movieGenreSlice,
+        addUserMovie: addUserMoviesSlice,
+        getUserMovies: userMoviesSlice,
+        removeUserMovie: removeUserMoviesSlice,
     }
 });
 

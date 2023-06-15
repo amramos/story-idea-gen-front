@@ -8,22 +8,20 @@ import { Link } from 'react-router-dom';
 function NavbarPanel() {
 
     const cartProducts = useSelector(state => state.cart); 
+    const { data: userMovies, loadingStatus } = useSelector(state => state.getUserMovies);
     
     return (
         <Navbar bg="primary" variant="dark" expand="lg">
             <Container fluid>
-                <Navbar.Brand href="#">My Brand</Navbar.Brand>
+                <Navbar.Brand href="#"><img src="./png/logo-no-background.png" width="180px"/></Navbar.Brand>
                     <Nav>
-                        <Nav.Link to="/" as={Link}>Products</Nav.Link>
-                    </Nav>
-                    <Nav>
-                        <Nav.Link to="/story-search" as={Link}>Stories search</Nav.Link>
+                        <Nav.Link to="/story-search" as={Link}><b>Search</b></Nav.Link>
                     </Nav>
 
                     <Navbar.Toggle />
                     <Navbar.Collapse className='justify-content-end'>
                         <Navbar.Text>
-                            <Nav.Link to="Cart" as={Link}>My cart <b>({cartProducts.length})</b></Nav.Link>
+                            <Nav.Link to="/my-stories" as={Link}>My stories <b>({userMovies.length})</b></Nav.Link>
                         </Navbar.Text>
                     </Navbar.Collapse>
             </Container>
