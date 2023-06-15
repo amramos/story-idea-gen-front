@@ -45,16 +45,18 @@ export const getMovies = createAsyncThunk('movies/get', async (query) => {
 
     var results = response.data.results;
     
-    if (!query.genre) {
-        filteredResults = results;
-    } else {
-        var filteredResults = [];
-        for (var i = 0; i < results.length; i++) {
-            if (results[i].genre_ids.includes(query.genre*1)) {
-                filteredResults.push(results[i]);
-            }
+    var filteredResults = [];
+    let genreFromQuery = query.genre*1;
+
+    results.map(genre => {
+        if (genre.genre_ids.includes(99)) {
+            alert('99');
         }
-    }
+
+        if ((genreFromQuery === 0 || genre.genre_ids.includes(genreFromQuery)) && !genre.genre_ids.includes(99)) {
+            filteredResults.push(genre);
+        }
+    });
 
     return filteredResults;
 });

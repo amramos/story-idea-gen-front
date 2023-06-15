@@ -42,5 +42,13 @@ export const getMovieGenres = createAsyncThunk('movies/getMovieGenres', async ()
     var url = 'https://api.themoviedb.org/3/genre/movie/list?language=en'; 
     const response = await reqMoviesDB.get(url);
 
-    return response.data.genres;
+    let genresWithoutDocumentary = [];
+
+    response.data.genres.map(genre => {
+        if (genre.id != 99) {
+            genresWithoutDocumentary.push(genre);
+        }
+    })
+
+    return genresWithoutDocumentary;
 });

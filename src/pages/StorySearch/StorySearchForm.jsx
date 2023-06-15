@@ -47,7 +47,7 @@ const StorySearchForm = () => {
         return genres.map((genre) => {
             return (
                 <div>
-                    <Option value={genre.id}>{genre.name}</Option>
+                    <Option value={genre.id}> {genre.name}</Option>
                 </div>
             )}
         );

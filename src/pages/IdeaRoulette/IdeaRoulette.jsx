@@ -8,9 +8,9 @@ const IdeaRoulette = () => {
 
     const categories = ["Character", "Plot", "Theme", "Genre"];
 
-    const [ shouldPlayRoulette, setShouldPlayRoulette ] = useState(false);
+    const [shouldPlayRoulette, setShouldPlayRoulette] = useState(false);
 
-    const { data: userMovies, loeadingStatusUserMovies }  = useSelector(state => state.getUserMovies);
+    const { data: userMovies, loeadingStatusUserMovies } = useSelector(state => state.getUserMovies);
 
     const playRoulette = () => {
         setShouldPlayRoulette(true);
@@ -20,38 +20,25 @@ const IdeaRoulette = () => {
         if (shouldPlayRoulette) {
             setShouldPlayRoulette(false);
         }
-        
+
     }, [shouldPlayRoulette]);
 
-    const roulette = () => {
+    const Roulette = () => {
 
-        var movies = [];
-        var randomElement = 0;
-
-        for (var i = 0; i < categories.length; i++) {
-            randomElement = Math.floor(Math.random() * userMovies.length);
-            movies.push({
-                category: categories[i],
-                movieId: randomElement,
-            });
-        }
-
-        //alert(JSON.stringify(movies[0]));
-
-        return movies.map((movie) => {(
-            <div>
-            <h2> {movie.category} </h2>
-            <h2> {movie.movieId} </h2>
-            </div>
-        )});
+        return categories.map(category => {
+            return (<div>
+                <h2> {category} </h2>
+                <h2> {userMovies[Math.floor(Math.random() * userMovies.length)].title} </h2>
+            </div>)
+        });
     }
 
     return (
         <>
             <h1>Idea Roulette</h1>
-            <Button variant="contained" color="success" onClick={() => {playRoulette()}} style={{marginRight:"10px"}} ><RotateRight /> Play roulette!</Button>
-            <div className="row" style={{margin: '15px'}}>
-                {roulette()}
+            <Button variant="contained" color="success" onClick={() => { playRoulette() }} style={{ marginRight: "10px" }} ><RotateRight /> Play roulette!</Button>
+            <div className="row" style={{ margin: '15px' }}>
+                <Roulette />
             </div>
         </>
     )
