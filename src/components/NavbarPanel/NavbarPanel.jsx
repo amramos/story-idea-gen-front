@@ -14,10 +14,9 @@ function NavbarPanel() {
         <Navbar bg="primary" variant="dark" expand="lg">
             <Container fluid>
                 <Navbar.Brand href="#"><img src="./png/logo-no-background.png" width="180px"/></Navbar.Brand>
-                    <Nav>
-                        <Nav.Link to="/story-search" as={Link}><b>Search</b></Nav.Link>
-                    </Nav>
-
+                    <Nav><Nav.Link to="/story-search" as={Link}><b>Search</b></Nav.Link></Nav>
+                    <Nav><Nav.Link to="/idea-roulette" as={Link}><b>Idea Roulette</b></Nav.Link></Nav>
+                    
                     <Navbar.Toggle />
                     <Navbar.Collapse className='justify-content-end'>
                         <Navbar.Text>
